@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-// @ts-expect-error Next.js allows global CSS import in App Router.
+// @ts-ignore
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
