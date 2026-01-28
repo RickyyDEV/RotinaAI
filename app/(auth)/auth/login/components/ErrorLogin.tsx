@@ -33,7 +33,7 @@ export default function ErrorLogin({
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="flex-shrink-0 mt-0.5"
+                  className="shrink-0 mt-0.5"
                 >
                   <AlertCircle className="w-5 h-5 text-red-500" />
                 </motion.div>
@@ -52,7 +52,7 @@ export default function ErrorLogin({
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onClose}
-                className="flex-shrink-0 text-red-600/50 hover:text-red-600 dark:text-red-400/50 dark:hover:text-red-400 transition-colors"
+                className="shrink-0 text-red-600/50 hover:text-red-600 dark:text-red-400/50 dark:hover:text-red-400 transition-colors"
               >
                 <X className="w-4 h-4" />
               </motion.button>
@@ -64,7 +64,7 @@ export default function ErrorLogin({
               animate={{ scaleX: 0 }}
               transition={{ duration: 6, ease: "linear" }}
               onAnimationComplete={onClose}
-              className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-red-500 to-red-600 rounded-b-lg origin-left"
+              className="absolute bottom-0 left-0 h-1 bg-linear-to-r from-red-500 to-red-600 rounded-b-lg origin-left"
             />
           </div>
         </motion.div>

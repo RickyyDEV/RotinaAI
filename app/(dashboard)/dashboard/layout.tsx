@@ -1,6 +1,12 @@
 import { auth } from "@/app/(auth)/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import DashboardApp from "./components/DashboardApp";
+
+export const metadata = {
+  title: "Dashboard - RotinaAI",
+  description: "Organize sua rotina com IA",
+};
 
 export default async function DashboardLayout({
   children,
@@ -11,5 +17,13 @@ export default async function DashboardLayout({
     headers: await headers(),
   });
   if (!authenticate?.user) redirect("/auth/login");
-  return <>{children}</>;
+
+  const userName = authenticate.user.name || "Usuário";
+  const userEmail = authenticate.user.email || "";
+
+  return (
+    <DashboardApp userName={userName} userEmail={userEmail}>
+      {children}
+    </DashboardApp>
+  );
 }

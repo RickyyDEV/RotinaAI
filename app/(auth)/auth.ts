@@ -39,11 +39,14 @@ export const auth = betterAuth({
     sendVerificationEmail: async ({ user, url }) => {
       await SendOTP(user.email, user.name, url);
     },
-    expiresIn: 1000 * 60 * 60 * 24,
+    expiresIn: 60 * 60 * 24 * 1,
     emailAndPassword: {
       requireEmailVerification: true,
       autoSignInAfterVerification: true,
     },
     autoSignInAfterVerification: true,
+  },
+  session: {
+    expiresIn: 60 * 60 * 24 * 1, // 7 days
   },
 });

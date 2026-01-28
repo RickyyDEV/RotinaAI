@@ -1,8 +1,12 @@
+import { auth } from "@/app/(auth)/auth";
+import { headers } from "next/headers";
+import DashboardWelcome from "./components/DashboardWelcome";
+import { notFound } from "next/navigation";
+
 export default async function DashboardPage() {
-  return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Bem-vindo ao Dashboard</h1>
-      <p>Esta é a sua área de controle principal.</p>
-    </div>
-  );
+  const authenticate = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!authenticate?.user) return notFound();
+  return <DashboardWelcome userName={authenticate.user.name} />;
 }
