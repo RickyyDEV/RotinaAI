@@ -38,7 +38,7 @@ RotinaAI simplifica tudo com uma interface intuitiva e IA que:
 
 Digite ou fale em linguagem natural — "Preciso entregar um projeto web, estudar React e fazer exercício hoje"
 
-### 🧠 IA Inteligente
+### 🧠 IA
 
 - Analisa tarefas complexas
 - Quebra em subtarefas
@@ -62,8 +62,8 @@ Digite ou fale em linguagem natural — "Preciso entregar um projeto web, estuda
 ### 🎨 Design Premium
 
 - Interface moderna e responsiva
-- Dark mode elegante
-- Animações fluidas
+- Dark mode
+- Animações
 - Totalmente mobile-friendly
 
 ---
@@ -100,18 +100,6 @@ Digite ou fale em linguagem natural — "Preciso entregar um projeto web, estuda
 - **TypeScript** — Type checking
 
 ---
-
-## 🎨 Design System
-
-### Paleta de Cores
-
-| Elemento  | Cor       | Função             |
-| --------- | --------- | ------------------ |
-| Primary   | `#2563EB` | Ações principais   |
-| Secondary | `#7C3AED` | Ações secundárias  |
-| Success   | `#10B981` | Estados positivos  |
-| Warning   | `#F59E0B` | Avisos             |
-| Danger    | `#EF4444` | Erros e destruição |
 
 ### Tipografia
 
@@ -151,7 +139,6 @@ Totalmente responsivo em todos os dispositivos:
 - ✅ Autenticação com Better Auth
 - ✅ Validação de formulários (Zod)
 - ✅ Email verification com tokens
-- ✅ HTTPS by default
 - ✅ Type-safe queries com Prisma
 - ✅ Server-side validation
 
@@ -206,12 +193,11 @@ Perfeito para:
 
 ### ✅ Concluído
 
-- [x] Design system completo
+- [] Design completo
 - [x] Autenticação com Better Auth
 - [x] Sistema de login/registro
-- [x] Email verification
+- [x] Verificação de email
 - [x] Interface responsiva
-- [x] Componentes UI base
 
 ### 🚧 Em Desenvolvimento
 
@@ -237,17 +223,15 @@ Perfeito para:
 
 ### Código Limpo
 
-- ✅ Zero dead files
-- ✅ Componentes reutilizáveis
 - ✅ Estrutura organizada
-- ✅ TypeScript strict mode
-- ✅ ESLint + Prettier
+- ✅ TypeScript
+- ✅ ESLint
 
 ### Performance
 
 - ✅ Server Components por padrão
 - ✅ Lazy loading de componentes
-- ✅ Skeleton UI para loading
+- ✅ Skeleton para loading
 - ✅ Image optimization
 - ✅ Font optimization
 
@@ -255,31 +239,15 @@ Perfeito para:
 
 - ✅ Feedback visual em todas ações
 - ✅ Estados de erro tratados
-- ✅ Empty states bonitos
-- ✅ Loading states elegantes
-- ✅ Animações propositais
+- ✅ Empty states
+- ✅ Loading states
+- ✅ Animações
 
 ---
 
 ## 🤝 Contribuição
 
-Este é um projeto em desenvolvimento ativo. Estou aberto a sugestões e melhorias!
-
-### Como Contribuir
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
+Este é um projeto em desenvolvimento ativo.
 
 ## 👨‍💻 Autor
 
@@ -287,32 +255,21 @@ Desenvolvido por **Ricardo** como projeto de portfólio.
 
 ### Links
 
-- 🌐 [Portfólio](https://seu-portfolio.com)
-- 💼 [LinkedIn](https://linkedin.com)
-- 🐙 [GitHub](https://github.com)
+- 🌐 [Portfólio](https://ricardomarinho.tech)
+- 💼 [LinkedIn](https://www.linkedin.com/in/ricardo-marinho-7b6b66244/)
+- 🐙 [GitHub](https://github.com/RickyyDEV)
 
 ---
 
 ## 📞 Contato & Suporte
 
 - 📧 Email: seu-email@example.com
-- 💬 Discord: [Link do servidor]
+- 💬 Discord: [$icky](https://discord.com/users/409801761470152704)
 - 🐛 Issues: Use GitHub Issues para reportar bugs
-
----
-
-## 🙏 Agradecimentos
-
-- **Vercel** — Hosting e infraestrutura
-- **shadcn/ui** — Componentes base
-- **Next.js** — Framework incrível
-- **Comunidade Open Source** — Inspiração
-
----
 
 <div align="center">
 
-**Desenvolvido com ❤️ para aumentar sua produtividade**
+**Desenvolvido para aumentar sua produtividade**
 
 ![Status](https://img.shields.io/badge/Status-Development-yellow?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
