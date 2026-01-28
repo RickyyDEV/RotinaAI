@@ -12,6 +12,8 @@
 .github/
 # testing
 /coverage
+docs/
+/docs
 
 # next.js
 /.next/
