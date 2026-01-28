@@ -11,6 +11,11 @@ import { redirect } from "next/navigation";
 export const auth = betterAuth({
   secret: env.BETTER_AUTH_SECRET,
   baseURL: env.NEXT_PUBLIC_BETTER_AUTH_URL,
+  trustedOrigins: [
+    "https://rotinaai.com",
+    "http://localhost:3000",
+    "https://rotinaai.vercel.app",
+  ],
   socialProviders: {
     google: {
       clientId: env.GOOGLE_CLIENT_ID,
