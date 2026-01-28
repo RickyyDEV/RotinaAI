@@ -1,8 +1,9 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "../(database)/prisma";
-import SendOTP from "./auth/register/verification/otp";
+import SendOTP from "./auth/register/verification/email-url";
 import { env } from "@/env";
+import SendResetPasswordEmailUrl from "./auth/forgot-password/verification/email-url";
 
 export const auth = betterAuth({
   secret: env.BETTER_AUTH_SECRET,
@@ -30,6 +31,9 @@ export const auth = betterAuth({
       hash: (password) => Bun.password.hash(password),
       verify: ({ password, hash }) => Bun.password.verify(password, hash),
     },
+    sendResetPassword: async ({ user, url }) => {
+      await SendResetPasswordEmailUrl(user.email, url, user.name);
+    },
   },
   advanced: {
     cookiePrefix: "rotinaai_auth",
@@ -50,3 +54,5 @@ export const auth = betterAuth({
     expiresIn: 60 * 60 * 24 * 1, // 7 days
   },
 });
+
+export type UserType = typeof auth.$Infer.Session.user;

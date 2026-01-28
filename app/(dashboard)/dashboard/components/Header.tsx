@@ -16,15 +16,16 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/app/(auth)/client";
+import type { UserType } from "@/app/(auth)/auth";
+import Image from "next/image";
 
 interface HeaderProps {
-  userName: string;
-  userEmail: string;
+  user: UserType;
 }
 
-export default function Header({ userName, userEmail }: HeaderProps) {
+export default function Header({ user }: HeaderProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -119,7 +120,7 @@ export default function Header({ userName, userEmail }: HeaderProps) {
           >
             <Clock className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-foreground">
-              {greeting}, {userName.split(" ")[0]}!
+              {greeting}, {user.name.split(" ")[0]}!
             </span>
           </motion.div>
 
@@ -184,16 +185,26 @@ export default function Header({ userName, userEmail }: HeaderProps) {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center gap-2 px-2 md:px-3 py-2 rounded-lg hover:bg-muted transition-all group"
               >
-                <div className="w-8 h-8 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm">
-                  {userName.charAt(0).toUpperCase()}
-                </div>
+                {user.image ? (
+                  <Image
+                    src={user.image}
+                    alt="User Avatar"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm">
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                )}
 
                 <div className="hidden sm:block text-left min-w-0">
                   <p className="text-sm font-semibold text-foreground truncate">
-                    {userName.split(" ")[0]}
+                    {user.name.split(" ")[0]}
                   </p>
                   <p className="text-xs text-muted-foreground truncate">
-                    {userEmail.split("@")[0]}
+                    {user.email.split("@")[0]}
                   </p>
                 </div>
 
@@ -234,10 +245,10 @@ export default function Header({ userName, userEmail }: HeaderProps) {
                       {/* User Info Section */}
                       <div className="px-4 py-3 border-b border-border bg-muted/50">
                         <p className="text-sm font-semibold text-foreground">
-                          {userName}
+                          {user.name}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          {userEmail}
+                          {user.email}
                         </p>
                       </div>
 

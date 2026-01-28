@@ -12,6 +12,7 @@ export const env = createEnv({
     SMTP_TOKEN: z.string().min(1),
     GOOGLE_SECRET: z.string().min(1),
     GOOGLE_CLIENT_ID: z.string().min(1),
+    RESEND_KEY: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_BETTER_AUTH_URL: z.string().min(1),
@@ -27,5 +28,6 @@ export const env = createEnv({
     SMTP_TOKEN: process.env.SMTP_TOKEN,
     GOOGLE_SECRET: process.env.GOOGLE_SECRET,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    RESEND_KEY: process.env.RESEND_KEY,
   },
 });

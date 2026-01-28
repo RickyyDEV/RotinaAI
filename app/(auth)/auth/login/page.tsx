@@ -92,7 +92,6 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     mode: "onChange",
@@ -118,18 +117,22 @@ export default function LoginPage() {
 
   const handleGoogleLogin = async () => {
     dispatch({ type: "START_GOOGLE_LOADING" });
-    let authenticate = await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/dashboard",
-    });
-    if (authenticate.error) {
-      dispatch({
-        type: "SHOW_ERROR",
-        payload: {
-          message: "Ocorreu um erro ao tentar logar com o Google.",
-          details: authenticate.error.message,
-        },
+    try {
+      const authenticate = await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/dashboard",
       });
+      if (authenticate.error) {
+        dispatch({
+          type: "SHOW_ERROR",
+          payload: {
+            message: "Ocorreu um erro ao tentar logar com o Google.",
+            details: authenticate.error.message,
+          },
+        });
+      }
+    } finally {
+      dispatch({ type: "END_GOOGLE_LOADING" });
     }
   };
 
@@ -261,7 +264,7 @@ export default function LoginPage() {
                   Senha
                 </label>
                 <Link
-                  href="#"
+                  href="/auth/forgot-password"
                   className="text-xs text-primary hover:text-primary/80 transition"
                 >
                   Esqueceu a senha?

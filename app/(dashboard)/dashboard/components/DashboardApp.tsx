@@ -6,18 +6,14 @@ import { useSidebar } from "../context/SidebarContext";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import { SidebarProvider } from "../context/SidebarContext";
+import type { UserType } from "@/app/(auth)/auth";
 
 interface DashboardAppProps {
-  userName: string;
-  userEmail: string;
+  user: UserType;
   children: ReactNode;
 }
 
-export default function DashboardApp({
-  userName,
-  userEmail,
-  children,
-}: DashboardAppProps) {
+export default function DashboardApp({ user, children }: DashboardAppProps) {
   function DashboardShell() {
     const { isCollapsed } = useSidebar();
     const sidebarWidth = isCollapsed ? 80 : 260;
@@ -28,7 +24,7 @@ export default function DashboardApp({
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="flex-1 flex flex-col overflow-hidden"
       >
-        <Header userName={userName} userEmail={userEmail} />
+        <Header user={user} />
         <main className="flex-1 overflow-y-auto">
           <div className="p-6 lg:p-8 max-w-7xl mx-auto w-full">{children}</div>
         </main>
@@ -39,7 +35,7 @@ export default function DashboardApp({
   return (
     <SidebarProvider>
       <div className="flex h-screen bg-background">
-        <Sidebar userName={userName} />
+        <Sidebar userName={user.name} />
         <DashboardShell />
       </div>
     </SidebarProvider>

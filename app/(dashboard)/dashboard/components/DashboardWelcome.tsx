@@ -178,7 +178,7 @@ export default function DashboardWelcome({ userName }: DashboardWelcomeProps) {
                 <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
-                    animate={{ width: `${Math.random() * 100}%` }}
+                    animate={{ width: `${(i * 19 + 42) % 100}%` }}
                     transition={{ delay: i * 0.1, duration: 0.8 }}
                     className="h-full bg-linear-to-r from-primary to-secondary rounded-full"
                   />

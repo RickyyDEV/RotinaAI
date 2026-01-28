@@ -1,7 +1,5 @@
 "use server";
-import mailerSend from "@/app/lib/smtp";
-import { env } from "@/env";
-import { EmailParams, Recipient, Sender } from "mailersend";
+import resend from "@/app/lib/smtp";
 
 // Template HTML para Email de Verificação com Botão
 function generateVerificationEmailTemplate(
@@ -250,36 +248,25 @@ export default async function SendVerificationEmail(
   name: string,
   verificationLink: string,
 ) {
-  try {
-    const sentFrom = new Sender(env.SMTP_USERNAME, "RotinaAI");
-
-    const recipients = [new Recipient(email, name)];
-
-    const emailHTML = generateVerificationEmailTemplate(
-      verificationLink,
-      email,
-    );
-
-    const emailParams = new EmailParams()
-      .setFrom(sentFrom)
-      .setTo(recipients)
-      .setReplyTo(sentFrom)
-      .setSubject(`✉️ Verifique seu Email - RotinaAI`)
-      .setHtml(emailHTML);
-
-    const send = await mailerSend.email.send(emailParams);
-
-    return {
-      success: true,
-      message: "Email de verificação enviado com sucesso",
-      data: send,
-    };
-  } catch (error) {
+  const emailHTML = generateVerificationEmailTemplate(verificationLink, email);
+  const { data, error } = await resend.emails.send({
+    from: "RotinaAI <onboarding@resend.dev>",
+    to: name + " <" + email + ">",
+    subject: `✉️ Verifique seu Email - RotinaAI`,
+    html: emailHTML,
+  });
+  if (error) {
     console.error("❌ Erro ao enviar email de verificação:", error);
     return {
       success: false,
       message: "Erro ao enviar email de verificação",
       error: error,
+    };
+  } else {
+    return {
+      success: true,
+      message: "Email de verificação enviado com sucesso",
+      data,
     };
   }
 }

@@ -13,17 +13,10 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let authenticate = await auth.api.getSession({
+  const authenticate = await auth.api.getSession({
     headers: await headers(),
   });
   if (!authenticate?.user) redirect("/auth/login");
 
-  const userName = authenticate.user.name || "Usuário";
-  const userEmail = authenticate.user.email || "";
-
-  return (
-    <DashboardApp userName={userName} userEmail={userEmail}>
-      {children}
-    </DashboardApp>
-  );
+  return <DashboardApp user={authenticate.user}>{children}</DashboardApp>;
 }

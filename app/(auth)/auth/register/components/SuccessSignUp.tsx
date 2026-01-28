@@ -5,10 +5,12 @@ import { CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogTitle,
 } from "@/app/components/ui/dialog";
+import { Button } from "@/app/components/ui/button";
 
 interface SuccessSignUpProps {
   email?: string;
@@ -138,6 +140,28 @@ export default function SuccessSignUp({
             >
               <Clock className="w-4 h-4 shrink-0" />
               <span>Link válido por 24 horas</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <DialogFooter className="pt-2 sm:justify-between">
+                <DialogClose asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => onRetry?.()}
+                  >
+                    Usar outro email
+                  </Button>
+                </DialogClose>
+
+                <Button asChild type="button">
+                  <Link href="/auth/login">Ir para login</Link>
+                </Button>
+              </DialogFooter>
             </motion.div>
           </div>
         </div>
