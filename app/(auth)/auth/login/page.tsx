@@ -7,9 +7,7 @@ import { z } from "zod";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Logo from "@/app/components/Logo";
-import { SignIn, type SignInResponse } from "./action";
 import ErrorLogin from "./components/ErrorLogin";
-import type { APIError } from "better-auth";
 import { authClient } from "../../client";
 
 const loginSchema = z.object({
