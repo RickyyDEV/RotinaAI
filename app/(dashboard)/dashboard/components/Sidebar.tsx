@@ -12,8 +12,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSidebar } from "../context/SidebarContext";
 import Logo from "@/app/components/Logo";
+import { useSidebar } from "./context/SidebarContext";
 
 interface SidebarProps {
   userName: string;

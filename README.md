@@ -276,6 +276,4 @@ Desenvolvido por **Ricardo** como projeto de portfólio.
 ![Made with Next.js](https://img.shields.io/badge/Made%20with-Next.js-black?style=flat-square)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue?style=flat-square)
 
-_Transformando procrastinação em produtividade, um dia por vez._
-
 </div>

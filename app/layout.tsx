@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-// @ts-ignore
+// @ts-expect-error Next.js suporta import global de CSS no layout, mas o TS pode não resolver tipos aqui.
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "./components/ui/theme-provider";
 
 export const metadata: Metadata = {
   title: "RotinaAI - Organize sua Rotina com IA",
@@ -25,10 +26,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" suppressHydrationWarning>
       <body>
-        <Analytics />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Analytics />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

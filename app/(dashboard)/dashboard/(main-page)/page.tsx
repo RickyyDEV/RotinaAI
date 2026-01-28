@@ -1,6 +1,6 @@
 import { auth } from "@/app/(auth)/auth";
 import { headers } from "next/headers";
-import DashboardWelcome from "./components/DashboardWelcome";
+import DashboardWelcome from "../components/DashboardWelcome";
 import { notFound } from "next/navigation";
 
 export default async function DashboardPage() {

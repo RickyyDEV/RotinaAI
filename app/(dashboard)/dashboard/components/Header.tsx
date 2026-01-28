@@ -316,31 +316,6 @@ export default function Header({ user }: HeaderProps) {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Top Status Bar - AI Helper Prompt */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="hidden md:block px-6 py-3 bg-linear-to-r from-primary/5 via-secondary/5 to-accent/5 border-t border-primary/10"
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-foreground">
-              Pronto para planejar seu dia? Digite seus objetivos e deixe a IA
-              organizar!
-            </span>
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="text-xs font-semibold px-3 py-1 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
-          >
-            Começar
-          </motion.button>
-        </div>
-      </motion.div>
     </motion.header>
   );
 }
