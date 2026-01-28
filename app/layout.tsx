@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// @ts-expect-error Next.js suporta import global de CSS no layout, mas o TS pode não resolver tipos aqui.
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "./components/ui/theme-provider";
