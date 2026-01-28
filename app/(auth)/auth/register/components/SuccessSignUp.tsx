@@ -148,16 +148,6 @@ export default function SuccessSignUp({
               transition={{ delay: 0.8 }}
             >
               <DialogFooter className="pt-2 sm:justify-between">
-                <DialogClose asChild>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => onRetry?.()}
-                  >
-                    Usar outro email
-                  </Button>
-                </DialogClose>
-
                 <Button asChild type="button">
                   <Link href="/auth/login">Ir para login</Link>
                 </Button>
