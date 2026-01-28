@@ -31,8 +31,8 @@ export const auth = betterAuth({
       hash: (password) => Bun.password.hash(password),
       verify: ({ password, hash }) => Bun.password.verify(password, hash),
     },
-    sendResetPassword: async ({ user, url }) => {
-      await SendResetPasswordEmailUrl(user.email, url, user.name);
+    sendResetPassword: async ({ user, token }) => {
+      await SendResetPasswordEmailUrl(user.email, token, user.name);
     },
   },
   advanced: {

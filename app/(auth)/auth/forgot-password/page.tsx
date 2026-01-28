@@ -107,7 +107,7 @@ export default function ForgotPasswordPage() {
     dispatch({ type: "START_SUBMIT" });
 
     try {
-      await SendForgetUrl(data.email, );
+      await SendForgetUrl(data.email);
       dispatch({ type: "SET_SENT", payload: { email: data.email } });
       reset({ email: data.email });
     } catch (err) {

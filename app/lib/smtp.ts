@@ -1,6 +1,8 @@
 import { env } from "@/env";
-import { Resend } from "resend";
+import { MailerSend } from "mailersend";
 
-const resend = new Resend(env.RESEND_KEY);
+const mailerSend = new MailerSend({
+  apiKey: env.SMTP_TOKEN,
+});
 
-export default resend;
+export default mailerSend;
