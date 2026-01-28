@@ -40,8 +40,35 @@ export const auth = betterAuth({
   },
   emailVerification: {
     sendOnSignUp: true,
-    sendVerificationEmail: async ({ user, url }) => {
-      await SendOTP(user.email, user.name, url);
+    sendVerificationEmail: async ({ user, url, token }, request) => {
+      // Preferimos enviar o usuário para uma página do app (UX premium)
+      // que valida o link e só então mostra a confirmação.
+      let origin: string | undefined;
+      if (url) {
+        try {
+          origin = new URL(url).origin;
+        } catch {
+          // `url` pode ser relativo dependendo do baseURL; usamos o request como fallback.
+        }
+      }
+      if (!origin && request?.url) {
+        try {
+          origin = new URL(request.url).origin;
+        } catch {
+          // ignore
+        }
+      }
+
+      const verificationPageUrl =
+        origin && token
+          ? (() => {
+              const u = new URL("/auth/register/verification", origin);
+              u.searchParams.set("token", token);
+              return u.toString();
+            })()
+          : url;
+
+      await SendOTP(user.email, user.name, verificationPageUrl);
     },
     expiresIn: 60 * 60 * 24 * 1,
     emailAndPassword: {
