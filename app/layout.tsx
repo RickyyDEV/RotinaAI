@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // @ts-ignore
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "RotinaAI - Organize sua Rotina com IA",
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body>{children}</body>
+      <body>
+        <Analytics />
+        {children}
+      </body>
     </html>
   );
 }

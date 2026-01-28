@@ -1,0 +1,101 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="favicon-grad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stopColor="#2563EB" />
+      <stop offset="100%" stopColor="#7C3AED" />
+    </linearGradient>
+    
+    <filter id="favicon-glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- White Background -->
+  <rect width="48" height="48" fill="#FFFFFF" />
+
+  <!-- Outer circle border -->
+  <circle
+    cx="24"
+    cy="24"
+    r="20"
+    fill="none"
+    stroke="url(#favicon-grad)"
+    strokeWidth="1.5"
+    opacity="0.25"
+  />
+
+  <!-- Central core node -->
+  <circle
+    cx="24"
+    cy="24"
+    r="4"
+    fill="url(#favicon-grad)"
+    filter="url(#favicon-glow)"
+  />
+
+  <!-- Orbital paths - Main (clockwise) -->
+  <!-- Top -->
+  <path
+    d="M24 24 L24 10"
+    stroke="url(#favicon-grad)"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    opacity="0.9"
+  />
+  <circle cx="24" cy="10" r="2" fill="url(#favicon-grad)" opacity="0.9" />
+
+  <!-- Top-right (120°) -->
+  <path
+    d="M24 24 L34.4 13.6"
+    stroke="url(#favicon-grad)"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    opacity="0.8"
+  />
+  <circle cx="34.4" cy="13.6" r="2" fill="url(#favicon-grad)" opacity="0.8" />
+
+  <!-- Bottom-right (240°) -->
+  <path
+    d="M24 24 L34.4 34.4"
+    stroke="url(#favicon-grad)"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    opacity="0.7"
+  />
+  <circle cx="34.4" cy="34.4" r="2" fill="url(#favicon-grad)" opacity="0.7" />
+
+  <!-- Counter-rotation accent paths (Secondary) -->
+  <!-- Bottom -->
+  <path
+    d="M24 24 L24 38"
+    stroke="#7C3AED"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    opacity="0.6"
+  />
+  <circle cx="24" cy="38" r="1.5" fill="#7C3AED" opacity="0.6" />
+
+  <!-- Bottom-left (240°) -->
+  <path
+    d="M24 24 L13.6 34.4"
+    stroke="#7C3AED"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    opacity="0.5"
+  />
+  <circle cx="13.6" cy="34.4" r="1.5" fill="#7C3AED" opacity="0.5" />
+
+  <!-- Top-left (120°) -->
+  <path
+    d="M24 24 L13.6 13.6"
+    stroke="#7C3AED"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    opacity="0.4"
+  />
+  <circle cx="13.6" cy="13.6" r="1.5" fill="#7C3AED" opacity="0.4" />
+</svg>
