@@ -1,5 +1,6 @@
 "use server";
 import mailerSend from "@/app/lib/smtp";
+import { env } from "@/env";
 import { EmailParams, Recipient, Sender } from "mailersend";
 
 // Template HTML para Email de Verificação com Botão
@@ -250,10 +251,7 @@ export default async function SendVerificationEmail(
   verificationLink: string,
 ) {
   try {
-    const sentFrom = new Sender(
-      "MS_IAgz7T@test-vz9dlem7qwn4kj50.mlsender.net",
-      "RotinaAI",
-    );
+    const sentFrom = new Sender(env.SMTP_USERNAME, "RotinaAI");
 
     const recipients = [new Recipient(email, name)];
 
