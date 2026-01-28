@@ -1,36 +1,324 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 RotinaAI
 
-## Getting Started
+> Um assistente diário que organiza sua rotina com inteligência artificial
 
-First, run the development server:
+## ✨ Visão Geral
+
+**RotinaAI** é um SaaS de produtividade moderno que transforma texto livre em agendas inteligentes, tarefas priorizadas e planos diários automatizados. Usando IA avançada, o sistema entende suas necessidades e cria estruturas de trabalho otimizadas automaticamente.
+
+Diga simplesmente o que precisa fazer e deixe a IA organizar tudo para você.
+
+---
+
+## 🎯 Problema Resolvido
+
+### O Desafio
+
+- ⏰ **Procrastinação** — Dificuldade em começar tarefas
+- 🔀 **Falta de Priorização** — Não saber o que fazer primeiro
+- 📝 **Organização Manual** — Gastar tempo estruturando tarefas
+- 😓 **Sobrecarga Cognitiva** — Muitas tarefas, pouca clareza
+- ❌ **Abandono de Planejadores** — Ferramentas complexas e chatas
+
+### A Solução
+
+RotinaAI simplifica tudo com uma interface intuitiva e IA que:
+
+- 🤖 Entende linguagem natural
+- 🎯 Prioriza tarefas automaticamente
+- ⏱️ Cria timelines realistas
+- 📊 Sugere otimizações
+- 💡 Aprende com seu padrão
+
+---
+
+## 🚀 Recursos Principais
+
+### 📝 Input Natural
+
+Digite ou fale em linguagem natural — "Preciso entregar um projeto web, estudar React e fazer exercício hoje"
+
+### 🧠 IA Inteligente
+
+- Analisa tarefas complexas
+- Quebra em subtarefas
+- Estima tempo realista
+- Sugere melhor sequência
+
+### 📅 Timeline Interativa
+
+- Visualização do dia em cards
+- Drag & drop para reorganizar
+- Estimativas de tempo
+- Indicadores de prioridade
+
+### 📊 Dashboard Intuitivo
+
+- Visão geral do dia
+- Estatísticas de produtividade
+- Histórico de semana
+- Streaks e motivação
+
+### 🎨 Design Premium
+
+- Interface moderna e responsiva
+- Dark mode elegante
+- Animações fluidas
+- Totalmente mobile-friendly
+
+---
+
+## 🛠️ Stack Tecnológico
+
+### Frontend
+
+- **Next.js 16** — Framework React com App Router
+- **TypeScript** — Type safety e DX melhorado
+- **Tailwind CSS v4** — Styling utility-first
+- **Framer Motion** — Animações e micro-interações
+- **React Hook Form** — Validação de formulários
+- **Zod** — Type-safe validation
+- **shadcn/ui** — Componentes UI reutilizáveis
+- **Lucide Icons** — Ícones limpos e modernos
+
+### Backend
+
+- **Better Auth** — Autenticação segura
+- **MailerSend** — Email verification
+- **Server Actions** — Funções server-side com Next.js
+
+### Dados
+
+- **Prisma** — ORM type-safe
+- **PostgreSQL** — Banco de dados robusto
+
+### DevOps & Quality
+
+- **Bun** — Runtime rápido
+- **ESLint** — Code linting
+- **Prettier** — Code formatting
+- **TypeScript** — Type checking
+
+---
+
+## 🎨 Design System
+
+### Paleta de Cores
+
+| Elemento  | Cor       | Função             |
+| --------- | --------- | ------------------ |
+| Primary   | `#2563EB` | Ações principais   |
+| Secondary | `#7C3AED` | Ações secundárias  |
+| Success   | `#10B981` | Estados positivos  |
+| Warning   | `#F59E0B` | Avisos             |
+| Danger    | `#EF4444` | Erros e destruição |
+
+### Tipografia
+
+- **Fonte primária**: Geist Sans / Inter
+- **Fonte mono**: Geist Mono / JetBrains Mono
+- **Hierarquia**: H1 (4xl) → Body (base) → Small (sm)
+
+### Componentes
+
+- Cards flutuantes com shadow suave
+- Bordas arredondadas (radius: 0.625rem)
+- Gradientes suaves (primary → secondary)
+- Transições 0.2s ease
+- Estado de loading com skeleton
+
+---
+
+## 📱 Responsividade
+
+Totalmente responsivo em todos os dispositivos:
+
+```
+📱 Mobile     (320px+)
+📱 Tablet     (768px+)
+🖥️  Desktop    (1280px+)
+```
+
+- Layout adaptativo com CSS Grid/Flex
+- Sidebar colapsável em mobile
+- Touch-friendly em todos os elementos
+- Performance otimizada
+
+---
+
+## 🔐 Segurança
+
+- ✅ Autenticação com Better Auth
+- ✅ Validação de formulários (Zod)
+- ✅ Email verification com tokens
+- ✅ HTTPS by default
+- ✅ Type-safe queries com Prisma
+- ✅ Server-side validation
+
+---
+
+## 📦 Instalação & Setup
+
+### Requisitos
+
+- Node.js 18+
+- Bun (recomendado)
+- PostgreSQL 14+
+
+### Passos de Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/rotinai.git
+cd rotinai
+
+# 2. Instale dependências
+bun install
+
+# 3. Configure variáveis de ambiente
+cp .env.example .env.local
+
+# 4. Setup do banco de dados
+bun prisma migrate dev
+
+# 5. Inicie o servidor
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A aplicação estará disponível em `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌍 Público-Alvo
 
-## Learn More
+Perfeito para:
 
-To learn more about Next.js, take a look at the following resources:
+- 👨‍💻 **Desenvolvedores** que querem organizar projetos
+- 🎓 **Estudantes** que procrastinam
+- 💼 **Freelancers** com múltiplos projetos
+- 🏢 **Profissionais remotos** sem estrutura
+- ✍️ **Criadores de conteúdo** com rotinas complexas
+- 😴 **Qualquer um que procrastina**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚦 Status do Projeto
 
-## Deploy on Vercel
+### ✅ Concluído
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [x] Design system completo
+- [x] Autenticação com Better Auth
+- [x] Sistema de login/registro
+- [x] Email verification
+- [x] Interface responsiva
+- [x] Componentes UI base
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🚧 Em Desenvolvimento
+
+- [ ] Dashboard principal
+- [ ] Integração com IA
+- [ ] Timeline interativa
+- [ ] Criação de tarefas
+- [ ] Estatísticas
+- [ ] Mobile app
+- [ ] Integrações (Google Calendar, etc)
+
+### 📋 Roadmap
+
+- [ ] v1.0 — MVP funcional
+- [ ] v1.5 — Dark mode + Otimizações
+- [ ] v2.0 — API pública
+- [ ] v2.5 — Mobile app nativa
+- [ ] v3.0 — Funcionalidades avançadas
+
+---
+
+## 🎯 Padrões & Boas Práticas
+
+### Código Limpo
+
+- ✅ Zero dead files
+- ✅ Componentes reutilizáveis
+- ✅ Estrutura organizada
+- ✅ TypeScript strict mode
+- ✅ ESLint + Prettier
+
+### Performance
+
+- ✅ Server Components por padrão
+- ✅ Lazy loading de componentes
+- ✅ Skeleton UI para loading
+- ✅ Image optimization
+- ✅ Font optimization
+
+### UX/Design
+
+- ✅ Feedback visual em todas ações
+- ✅ Estados de erro tratados
+- ✅ Empty states bonitos
+- ✅ Loading states elegantes
+- ✅ Animações propositais
+
+---
+
+## 🤝 Contribuição
+
+Este é um projeto em desenvolvimento ativo. Estou aberto a sugestões e melhorias!
+
+### Como Contribuir
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Ricardo** como projeto de portfólio.
+
+### Links
+
+- 🌐 [Portfólio](https://seu-portfolio.com)
+- 💼 [LinkedIn](https://linkedin.com)
+- 🐙 [GitHub](https://github.com)
+
+---
+
+## 📞 Contato & Suporte
+
+- 📧 Email: seu-email@example.com
+- 💬 Discord: [Link do servidor]
+- 🐛 Issues: Use GitHub Issues para reportar bugs
+
+---
+
+## 🙏 Agradecimentos
+
+- **Vercel** — Hosting e infraestrutura
+- **shadcn/ui** — Componentes base
+- **Next.js** — Framework incrível
+- **Comunidade Open Source** — Inspiração
+
+---
+
+<div align="center">
+
+**Desenvolvido com ❤️ para aumentar sua produtividade**
+
+![Status](https://img.shields.io/badge/Status-Development-yellow?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
+![Made with Next.js](https://img.shields.io/badge/Made%20with-Next.js-black?style=flat-square)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue?style=flat-square)
+
+_Transformando procrastinação em produtividade, um dia por vez._
+
+</div>

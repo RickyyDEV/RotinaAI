@@ -3,7 +3,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "../(database)/prisma";
 import { emailOTP, twoFactor } from "better-auth/plugins";
 import { EmailParams, Recipient, Sender } from "mailersend";
-import mailerSend from "@/lib/smtp";
+import mailerSend from "@/app/lib/smtp";
 import SendOTP from "./auth/register/verification/otp";
 import { env } from "@/env";
 import { redirect } from "next/navigation";

@@ -1,5 +1,5 @@
 "use server";
-import mailerSend from "@/lib/smtp";
+import mailerSend from "@/app/lib/smtp";
 import { EmailParams, Recipient, Sender } from "mailersend";
 
 // Template HTML para Email de Verificação com Botão
