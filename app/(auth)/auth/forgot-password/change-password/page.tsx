@@ -4,7 +4,6 @@ import { useEffect, useMemo, useReducer, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Eye, EyeOff, KeyRound, ShieldCheck, Sparkles } from "lucide-react";
@@ -138,20 +137,10 @@ export default function ChangePasswordPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-background via-background to-primary/5 flex items-center justify-center px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-5xl"
-      >
+      <div className="w-full max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* Left panel (desktop) */}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.05 }}
-            className="hidden lg:flex rounded-2xl border border-border bg-card/60 backdrop-blur p-8 shadow-xl relative overflow-hidden"
-          >
+          <div className="hidden lg:flex rounded-2xl border border-border bg-card/60 backdrop-blur p-8 shadow-xl relative overflow-hidden animate-in fade-in slide-in-from-left-4 duration-500 delay-75">
             <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
             <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-secondary/10 blur-3xl" />
 
@@ -202,15 +191,10 @@ export default function ChangePasswordPage() {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Main card */}
-          <motion.div
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-card border border-border rounded-2xl p-8 shadow-xl"
-          >
+          <div className="bg-card border border-border rounded-2xl p-8 shadow-xl animate-in fade-in slide-in-from-right-4 duration-500 delay-100">
             <div className="flex items-center justify-between gap-4 mb-6">
               <div>
                 <h2 className="text-2xl font-bold">Nova senha</h2>
@@ -224,159 +208,152 @@ export default function ChangePasswordPage() {
               </div>
             </div>
 
-            <AnimatePresence mode="wait">
-              {state.step === "form" ? (
-                <motion.div
-                  key="form"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                >
-                  {state.error.show && (
-                    <div className="mb-4 rounded-xl border border-destructive/30 bg-destructive/10 p-4">
-                      <p className="text-sm font-semibold text-destructive">
-                        {state.error.message}
+            {state.step === "form" ? (
+              <div
+                key="form"
+                className="animate-in fade-in slide-in-from-bottom-2 duration-200"
+              >
+                {state.error.show && (
+                  <div className="mb-4 rounded-xl border border-destructive/30 bg-destructive/10 p-4">
+                    <p className="text-sm font-semibold text-destructive">
+                      {state.error.message}
+                    </p>
+                    {state.error.details && (
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {state.error.details}
                       </p>
-                      {state.error.details && (
-                        <p className="text-xs text-muted-foreground mt-1">
-                          {state.error.details}
-                        </p>
-                      )}
-                    </div>
-                  )}
+                    )}
+                  </div>
+                )}
 
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">
-                        Nova senha
-                      </label>
-                      <div className="relative">
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          autoComplete="new-password"
-                          {...register("password")}
-                          className="w-full h-11 rounded-lg border border-border bg-background px-3 pr-10 outline-none focus:ring-2 focus:ring-primary/30"
-                          placeholder="Crie uma senha forte"
-                          onFocus={() => dispatch({ type: "CLEAR_ERROR" })}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword((v) => !v)}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-muted-foreground hover:text-foreground"
-                          aria-label={
-                            showPassword ? "Ocultar senha" : "Mostrar senha"
-                          }
-                        >
-                          {showPassword ? (
-                            <EyeOff className="w-4 h-4" />
-                          ) : (
-                            <Eye className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                      {errors.password && (
-                        <p className="text-xs text-destructive mt-1">
-                          {errors.password.message}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium mb-2">
-                        Repetir senha
-                      </label>
-                      <div className="relative">
-                        <input
-                          type={showConfirm ? "text" : "password"}
-                          autoComplete="new-password"
-                          {...register("confirmPassword")}
-                          className="w-full h-11 rounded-lg border border-border bg-background px-3 pr-10 outline-none focus:ring-2 focus:ring-primary/30"
-                          placeholder="Repita a senha"
-                          onFocus={() => dispatch({ type: "CLEAR_ERROR" })}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowConfirm((v) => !v)}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-muted-foreground hover:text-foreground"
-                          aria-label={
-                            showConfirm ? "Ocultar senha" : "Mostrar senha"
-                          }
-                        >
-                          {showConfirm ? (
-                            <EyeOff className="w-4 h-4" />
-                          ) : (
-                            <Eye className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                      {errors.confirmPassword && (
-                        <p className="text-xs text-destructive mt-1">
-                          {errors.confirmPassword.message}
-                        </p>
-                      )}
-                    </div>
-
-                    <button
-                      disabled={state.isSubmitting}
-                      type="submit"
-                      className="w-full h-11 rounded-lg bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/15 hover:opacity-95 transition disabled:opacity-60 disabled:cursor-not-allowed"
-                    >
-                      {state.isSubmitting ? "Salvando..." : "Redefinir senha"}
-                    </button>
-
-                    <div className="flex items-center justify-between text-sm">
-                      <Link
-                        href="/auth/forgot-password"
-                        className="text-muted-foreground hover:text-foreground transition"
-                      >
-                        Voltar
-                      </Link>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      Nova senha
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        autoComplete="new-password"
+                        {...register("password")}
+                        className="w-full h-11 rounded-lg border border-border bg-background px-3 pr-10 outline-none focus:ring-2 focus:ring-primary/30"
+                        placeholder="Crie uma senha forte"
+                        onFocus={() => dispatch({ type: "CLEAR_ERROR" })}
+                      />
                       <button
                         type="button"
-                        onClick={() => router.push("/auth/login")}
-                        className="text-primary hover:underline"
+                        onClick={() => setShowPassword((v) => !v)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-muted-foreground hover:text-foreground"
+                        aria-label={
+                          showPassword ? "Ocultar senha" : "Mostrar senha"
+                        }
                       >
-                        Ir para login
+                        {showPassword ? (
+                          <EyeOff className="w-4 h-4" />
+                        ) : (
+                          <Eye className="w-4 h-4" />
+                        )}
                       </button>
                     </div>
-                  </form>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  className="text-center"
-                >
-                  <div className="mx-auto mb-4 h-12 w-12 rounded-2xl bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white shadow-lg shadow-primary/20">
-                    <KeyRound className="w-6 h-6" />
+                    {errors.password && (
+                      <p className="text-xs text-destructive mt-1">
+                        {errors.password.message}
+                      </p>
+                    )}
                   </div>
-                  <h3 className="text-xl font-bold">Senha atualizada</h3>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Tudo certo. Agora você já pode entrar com sua nova senha.
-                  </p>
-                  <div className="mt-6 grid gap-3">
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">
+                      Repetir senha
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showConfirm ? "text" : "password"}
+                        autoComplete="new-password"
+                        {...register("confirmPassword")}
+                        className="w-full h-11 rounded-lg border border-border bg-background px-3 pr-10 outline-none focus:ring-2 focus:ring-primary/30"
+                        placeholder="Repita a senha"
+                        onFocus={() => dispatch({ type: "CLEAR_ERROR" })}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirm((v) => !v)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-muted-foreground hover:text-foreground"
+                        aria-label={
+                          showConfirm ? "Ocultar senha" : "Mostrar senha"
+                        }
+                      >
+                        {showConfirm ? (
+                          <EyeOff className="w-4 h-4" />
+                        ) : (
+                          <Eye className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+                    {errors.confirmPassword && (
+                      <p className="text-xs text-destructive mt-1">
+                        {errors.confirmPassword.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <button
+                    disabled={state.isSubmitting}
+                    type="submit"
+                    className="w-full h-11 rounded-lg bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/15 hover:opacity-95 transition disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {state.isSubmitting ? "Salvando..." : "Redefinir senha"}
+                  </button>
+
+                  <div className="flex items-center justify-between text-sm">
+                    <Link
+                      href="/auth/forgot-password"
+                      className="text-muted-foreground hover:text-foreground transition"
+                    >
+                      Voltar
+                    </Link>
                     <button
                       type="button"
                       onClick={() => router.push("/auth/login")}
-                      className="w-full h-11 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition"
+                      className="text-primary hover:underline"
                     >
                       Ir para login
                     </button>
-                    <Link
-                      href="/"
-                      className="w-full h-11 rounded-lg border border-border flex items-center justify-center text-sm font-semibold hover:bg-muted transition"
-                    >
-                      Voltar para home
-                    </Link>
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
+                </form>
+              </div>
+            ) : (
+              <div
+                key="success"
+                className="text-center animate-in fade-in slide-in-from-bottom-2 duration-200"
+              >
+                <div className="mx-auto mb-4 h-12 w-12 rounded-2xl bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+                  <KeyRound className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold">Senha atualizada</h3>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Tudo certo. Agora você já pode entrar com sua nova senha.
+                </p>
+                <div className="mt-6 grid gap-3">
+                  <button
+                    type="button"
+                    onClick={() => router.push("/auth/login")}
+                    className="w-full h-11 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition"
+                  >
+                    Ir para login
+                  </button>
+                  <Link
+                    href="/"
+                    className="w-full h-11 rounded-lg border border-border flex items-center justify-center text-sm font-semibold hover:bg-muted transition"
+                  >
+                    Voltar para home
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

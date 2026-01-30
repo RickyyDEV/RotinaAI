@@ -1,23 +1,149 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Logo from "./components/Logo";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-100px" },
-  transition: { duration: 0.6, ease: "easeOut" },
-};
+const features = [
+  {
+    icon: "🤖",
+    title: "IA Smart Parser",
+    description:
+      "Converte suas tarefas em texto livre para agendas estruturadas. Nosso modelo inteligente entende contexto, urgência e duração automaticamente.",
+  },
+  {
+    icon: "⏱️",
+    title: "Scheduler Inteligente",
+    description:
+      "Aloca blocos de tempo otimizados. Replica automaticamente quando algo atrasa, mantendo seu dia fluindo sem fricção.",
+  },
+  {
+    icon: "📊",
+    title: "Analytics Semanal",
+    description:
+      "Visualize seu progresso com heatmaps, streaks e relatórios. Entenda seus padrões e melhore continuamente.",
+  },
+  {
+    icon: "🎯",
+    title: "Priorização Automática",
+    description:
+      "Tarefas são organizadas por urgência, importância e impacto. Você sempre sabe o que fazer primeiro.",
+  },
+  {
+    icon: "📱",
+    title: "Mobile-First",
+    description:
+      "Interface responsiva e rápida. Planeje seu dia em qualquer lugar, sincronizado em tempo real.",
+  },
+  {
+    icon: "🔄",
+    title: "Sync Cross-Device",
+    description:
+      "Comece no celular, continue no desktop. Todos os dados sincronizados e sempre acessíveis.",
+  },
+];
 
-const staggerContainer = {
-  initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-  transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-};
+const howItHelps = [
+  {
+    icon: "⚡",
+    title: "Economia de Tempo",
+    subtitle: "-30 min/dia",
+    description:
+      "Converta planos vagos em tarefas práticas em minutos, não em horas. Seu tempo é valioso.",
+  },
+  {
+    icon: "😌",
+    title: "Reduz Ansiedade",
+    subtitle: "Menos stress",
+    description:
+      "Com um plano visual e realista, você dorme tranquilo sabendo exatamente o que fazer amanhã.",
+  },
+  {
+    icon: "🎯",
+    title: "Foco Real",
+    subtitle: "Blocos dedicados",
+    description:
+      "Blocos de concentração sugeridos pela IA. Sem distrações, sem procrastinação.",
+  },
+];
+
+const benefits = [
+  "✓ Organização visual automática",
+  "✓ Estimativas confiáveis de tempo",
+  "✓ Replanejamento inteligente em tempo real",
+  "✓ Relatórios semanais de progresso",
+  "✓ Sincronização entre dispositivos",
+  "✓ Sugestões de foco baseadas em IA",
+  "✓ Histórico e análise de produtividade",
+  "✓ Integrações com calendário e ferramentas",
+];
+
+const audiences = [
+  {
+    emoji: "🎓",
+    title: "Estudantes",
+    description:
+      "Organize sessões de estudo, revise cronogramas de provas e mantenha uma rotina equilibrada entre aulas, trabalho e vida pessoal.",
+    useCases: [
+      "Planejar semanas de provas",
+      "Distribuir leitura dos livros",
+      "Blocos de estudo eficientes",
+    ],
+  },
+  {
+    emoji: "💼",
+    title: "Freelancers",
+    description:
+      "Encaixe projetos entre reuniões, acompanhe deadlines de múltiplos clientes e mantenha a produtividade consistente.",
+    useCases: [
+      "Múltiplos projetos paralelos",
+      "Gestão de deadlines",
+      "Faturas e entregáveis",
+    ],
+  },
+  {
+    emoji: "👔",
+    title: "Profissionais",
+    description:
+      "Melhore foco diário em tarefas críticas, reduza reuniões improdutivas e acompanhe progresso em relação a metas.",
+    useCases: [
+      "Priorizar tarefas estratégicas",
+      "Proteger tempo de foco",
+      "Acompanhar OKRs",
+    ],
+  },
+  {
+    emoji: "🚀",
+    title: "Empreendedores",
+    description:
+      "Equilibre múltiplas responsabilidades, delegue com clareza e mantenha a visão estratégica enquanto executa.",
+    useCases: [
+      "Visão de 360° das atividades",
+      "Priorização executiva",
+      "Scaling com clareza",
+    ],
+  },
+  {
+    emoji: "✍️",
+    title: "Criadores de Conteúdo",
+    description:
+      "Planeje conteúdo, organize calendário editorial e mantenha consistência em publicações.",
+    useCases: [
+      "Calendário editorial",
+      "Ciclos de criação",
+      "Publicação agendada",
+    ],
+  },
+  {
+    emoji: "👨‍💻",
+    title: "Desenvolvedores",
+    description:
+      "Organize sprints, tarefas técnicas e balanceie entre código, reviews e mentoring.",
+    useCases: [
+      "Gestão de PRs e reviews",
+      "Sprints e planejamento",
+      "Débito técnico",
+    ],
+  },
+];
 
 export default function Home() {
   return (
@@ -33,12 +159,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <h2 className="text-4xl lg:text-5xl font-extrabold mb-4">
               Funcionalidades Poderosas
             </h2>
@@ -46,81 +167,33 @@ export default function Home() {
               RotinaAI combina inteligência artificial e design intuitivo para
               transformar sua rotina em um fluxo de produtividade.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-6 lg:gap-8"
-          >
-            {[
-              {
-                icon: "🤖",
-                title: "IA Smart Parser",
-                description:
-                  "Converte suas tarefas em texto livre para agendas estruturadas. Nosso modelo inteligente entende contexto, urgência e duração automaticamente.",
-              },
-              {
-                icon: "⏱️",
-                title: "Scheduler Inteligente",
-                description:
-                  "Aloca blocos de tempo otimizados. Replica automaticamente quando algo atrasa, mantendo seu dia fluindo sem fricção.",
-              },
-              {
-                icon: "📊",
-                title: "Analytics Semanal",
-                description:
-                  "Visualize seu progresso com heatmaps, streaks e relatórios. Entenda seus padrões e melhore continuamente.",
-              },
-              {
-                icon: "🎯",
-                title: "Priorização Automática",
-                description:
-                  "Tarefas são organizadas por urgência, importância e impacto. Você sempre sabe o que fazer primeiro.",
-              },
-              {
-                icon: "📱",
-                title: "Mobile-First",
-                description:
-                  "Interface responsiva e rápida. Planeje seu dia em qualquer lugar, sincronizado em tempo real.",
-              },
-              {
-                icon: "🔄",
-                title: "Sync Cross-Device",
-                description:
-                  "Comece no celular, continue no desktop. Todos os dados sincronizados e sempre acessíveis.",
-              },
-            ].map((feature, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="group relative"
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {features.map((feature, idx) => (
+              <div
+                key={feature.title}
+                className="group relative animate-in fade-in slide-in-from-bottom-4 duration-700"
+                style={{ animationDelay: `${idx * 60}ms` }}
               >
                 <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-secondary/10 rounded-2xl opacity-0 transition-opacity duration-300 blur-xl" />
-                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 transition-colors duration-300">
+                <div className="relative bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/50 transition-colors duration-300 hover:-translate-y-0.5 hover:shadow-lg will-change-transform">
                   <div className="text-4xl mb-4">{feature.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* How It Helps Section */}
       <section id="how" className="relative py-20 lg:py-32 bg-card/30">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <h2 className="text-4xl lg:text-5xl font-extrabold mb-4">
               Como Ajudamos Você
             </h2>
@@ -128,42 +201,14 @@ export default function Home() {
               Reduzimos a fricção entre pensar e fazer, permitindo que você
               foque no que realmente importa.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-6"
-          >
-            {[
-              {
-                icon: "⚡",
-                title: "Economia de Tempo",
-                subtitle: "-30 min/dia",
-                description:
-                  "Converta planos vagos em tarefas práticas em minutos, não em horas. Seu tempo é valioso.",
-              },
-              {
-                icon: "😌",
-                title: "Reduz Ansiedade",
-                subtitle: "Menos stress",
-                description:
-                  "Com um plano visual e realista, você dorme tranquilo sabendo exatamente o que fazer amanhã.",
-              },
-              {
-                icon: "🎯",
-                title: "Foco Real",
-                subtitle: "Blocos dedicados",
-                description:
-                  "Blocos de concentração sugeridos pela IA. Sem distrações, sem procrastinação.",
-              },
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-background border border-border rounded-2xl p-8 text-center"
+          <div className="grid md:grid-cols-3 gap-6">
+            {howItHelps.map((item, idx) => (
+              <div
+                key={item.title}
+                className="bg-background border border-border rounded-2xl p-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-700 hover:-translate-y-0.5 hover:shadow-lg transition will-change-transform"
+                style={{ animationDelay: `${idx * 80}ms` }}
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
                 <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
@@ -171,21 +216,16 @@ export default function Home() {
                   {item.subtitle}
                 </p>
                 <p className="text-muted-foreground">{item.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Benefits Section */}
       <section id="benefits" className="relative py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <h2 className="text-4xl lg:text-5xl font-extrabold mb-4">
               Benefícios Comprovados
             </h2>
@@ -193,46 +233,26 @@ export default function Home() {
               Milhares de usuários já transformaram sua rotina. Aqui está o que
               eles ganham.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          >
-            {[
-              "✓ Organização visual automática",
-              "✓ Estimativas confiáveis de tempo",
-              "✓ Replanejamento inteligente em tempo real",
-              "✓ Relatórios semanais de progresso",
-              "✓ Sincronização entre dispositivos",
-              "✓ Sugestões de foco baseadas em IA",
-              "✓ Histórico e análise de produtividade",
-              "✓ Integrações com calendário e ferramentas",
-            ].map((benefit, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-card border border-border rounded-xl p-5 hover:border-primary/50 transition-colors duration-300"
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {benefits.map((benefit, idx) => (
+              <div
+                key={benefit}
+                className="bg-card border border-border rounded-xl p-5 hover:border-primary/50 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-700"
+                style={{ animationDelay: `${idx * 40}ms` }}
               >
                 <p className="font-medium text-foreground">{benefit}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Who It's For Section */}
       <section id="who" className="relative py-20 lg:py-32 bg-card/30">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <h2 className="text-4xl lg:text-5xl font-extrabold mb-4">
               Para Quem é RotinaAI?
             </h2>
@@ -240,87 +260,14 @@ export default function Home() {
               Se você precisa organizar sua rotina, RotinaAI foi feito para
               você.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {[
-              {
-                emoji: "🎓",
-                title: "Estudantes",
-                description:
-                  "Organize sessões de estudo, revise cronogramas de provas e mantenha uma rotina equilibrada entre aulas, trabalho e vida pessoal.",
-                useCases: [
-                  "Planejar semanas de provas",
-                  "Distribuir leitura dos livros",
-                  "Blocos de estudo eficientes",
-                ],
-              },
-              {
-                emoji: "💼",
-                title: "Freelancers",
-                description:
-                  "Encaixe projetos entre reuniões, acompanhe deadlines de múltiplos clientes e mantenha a produtividade consistente.",
-                useCases: [
-                  "Múltiplos projetos paralelos",
-                  "Gestão de deadlines",
-                  "Faturas e entregáveis",
-                ],
-              },
-              {
-                emoji: "👔",
-                title: "Profissionais",
-                description:
-                  "Melhore foco diário em tarefas críticas, reduza reuniões improdutivas e acompanhe progresso em relação a metas.",
-                useCases: [
-                  "Priorizar tarefas estratégicas",
-                  "Proteger tempo de foco",
-                  "Acompanhar OKRs",
-                ],
-              },
-              {
-                emoji: "🚀",
-                title: "Empreendedores",
-                description:
-                  "Equilibre múltiplas responsabilidades, delegue com clareza e mantenha a visão estratégica enquanto executa.",
-                useCases: [
-                  "Visão de 360° das atividades",
-                  "Priorização executiva",
-                  "Scaling com clareza",
-                ],
-              },
-              {
-                emoji: "✍️",
-                title: "Criadores de Conteúdo",
-                description:
-                  "Planeje conteúdo, organize calendário editorial e mantenha consistência em publicações.",
-                useCases: [
-                  "Calendário editorial",
-                  "Ciclos de criação",
-                  "Publicação agendada",
-                ],
-              },
-              {
-                emoji: "👨‍💻",
-                title: "Desenvolvedores",
-                description:
-                  "Organize sprints, tarefas técnicas e balanceie entre código, reviews e mentoring.",
-                useCases: [
-                  "Gestão de PRs e reviews",
-                  "Sprints e planejamento",
-                  "Débito técnico",
-                ],
-              },
-            ].map((person, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="group relative"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {audiences.map((person, idx) => (
+              <div
+                key={person.title}
+                className="group relative animate-in fade-in slide-in-from-bottom-4 duration-700"
+                style={{ animationDelay: `${idx * 60}ms` }}
               >
                 <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-secondary/5 rounded-2xl opacity-0 transition-opacity duration-300" />
                 <div className="relative bg-background border border-border rounded-2xl p-8 h-full">
@@ -330,9 +277,9 @@ export default function Home() {
                     {person.description}
                   </p>
                   <ul className="space-y-2">
-                    {person.useCases.map((useCase, i) => (
+                    {person.useCases.map((useCase) => (
                       <li
-                        key={i}
+                        key={useCase}
                         className="text-sm text-muted-foreground flex items-start gap-2"
                       >
                         <span className="text-primary font-bold">→</span>
@@ -341,9 +288,9 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -354,12 +301,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
+          <div className="animate-in fade-in zoom-in-95 duration-700">
             <h2 className="text-4xl lg:text-5xl font-extrabold mb-6">
               Pronto para transformar sua rotina?
             </h2>
@@ -369,35 +311,28 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <motion.a
+              <a
                 href="#"
-                className="inline-flex items-center px-8 py-4 rounded-xl text-primary-foreground font-bold text-lg"
+                className="inline-flex items-center px-8 py-4 rounded-xl text-primary-foreground font-bold text-lg transition-transform duration-200 hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(37,99,235,0.3)] active:scale-[0.98]"
                 style={{
                   background:
                     "linear-gradient(90deg,var(--primary),var(--secondary))",
                 }}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 15px 35px rgba(37, 99, 235, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
               >
                 Começar Grátis
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="#"
-                className="inline-flex items-center px-8 py-4 rounded-xl border border-border text-foreground font-semibold"
-                whileHover={{ scale: 1.05, borderColor: "var(--primary)" }}
-                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-8 py-4 rounded-xl border border-border text-foreground font-semibold transition-transform duration-200 hover:scale-[1.03] hover:border-primary"
               >
                 Ver Demo
-              </motion.a>
+              </a>
             </div>
 
             <p className="text-sm text-muted-foreground mt-6">
               Acesso instantâneo • 7 dias de trial • Sem cartão necessário
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

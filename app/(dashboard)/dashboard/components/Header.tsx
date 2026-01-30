@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Bell,
   Menu,
@@ -12,7 +11,6 @@ import {
   User,
   HelpCircle,
   ChevronDown,
-  Sparkles,
   Clock,
   CheckCircle,
 } from "lucide-react";
@@ -20,6 +18,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/app/(auth)/client";
 import type { UserType } from "@/app/(auth)/auth";
 import Image from "next/image";
+import ThemeToggleIcon from "@/app/components/ThemeToggleIcon";
 
 interface HeaderProps {
   user: UserType;
@@ -30,7 +29,7 @@ export default function Header({ user }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchFocus, setSearchFocus] = useState(false);
-  const [notificationCount] = useState(3);
+  const notificationCount = 3;
   const router = useRouter();
   // Get current time period
   const hour = new Date().getHours();
@@ -61,31 +60,26 @@ export default function Header({ user }: HeaderProps) {
   ];
 
   return (
-    <motion.header className="sticky top-0 z-40 w-full bg-linear-to-b from-card to-card/95 border-b border-border backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full bg-linear-to-b from-card to-card/95 border-b border-border backdrop-blur-md">
       <div className="w-full px-4 md:px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           {/* Left: Mobile Menu & Logo */}
           <div className="flex items-center gap-3 flex-1 min-w-0">
             {/* Mobile Menu Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 hover:bg-muted rounded-lg transition-colors lg:hidden"
+              className="p-2 hover:bg-muted rounded-lg transition-colors lg:hidden hover:scale-105 active:scale-95"
             >
               {isMenuOpen ? (
                 <X className="w-5 h-5" />
               ) : (
                 <Menu className="w-5 h-5" />
               )}
-            </motion.button>
+            </button>
 
             {/* Search Bar - Hidden on small screens */}
             <div className="hidden md:flex items-center flex-1 max-w-md ml-4">
-              <motion.div
-                animate={{ width: searchFocus ? "100%" : "auto" }}
-                className="relative w-full"
-              >
+              <div className="relative w-full">
                 <div
                   className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border transition-all ${
                     searchFocus
@@ -107,59 +101,41 @@ export default function Header({ user }: HeaderProps) {
                     </kbd>
                   )}
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
 
           {/* Center: Greeting with time - Hidden on mobile */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="hidden xl:flex items-center gap-2 text-center"
-          >
+          <div className="hidden xl:flex items-center gap-2 text-center animate-in fade-in duration-300 delay-100">
             <Clock className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-foreground">
               {greeting}, {user.name.split(" ")[0]}!
             </span>
-          </motion.div>
+          </div>
 
           {/* Right: Actions */}
           <div className="flex items-center gap-2 md:gap-4">
             {/* Mobile Search Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 hover:bg-muted rounded-lg transition-colors md:hidden"
-            >
+            <button className="p-2 hover:bg-muted rounded-lg transition-colors md:hidden hover:scale-105 active:scale-95">
               <Search className="w-5 h-5 text-muted-foreground" />
-            </motion.button>
+            </button>
+
+            {/* Theme Toggle */}
+            <ThemeToggleIcon />
 
             {/* Notifications */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative p-2 hover:bg-muted rounded-lg transition-colors group"
-            >
+            <button className="relative p-2 hover:bg-muted rounded-lg transition-colors group hover:scale-105 active:scale-95">
               <div className="relative">
                 <Bell className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
                 {notificationCount > 0 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 w-3 h-3 bg-danger text-white text-xs rounded-full flex items-center justify-center font-bold bg-red-500"
-                  >
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-danger text-white text-xs rounded-full flex items-center justify-center font-bold bg-red-500 animate-in zoom-in duration-200">
                     {notificationCount}
-                  </motion.span>
+                  </span>
                 )}
               </div>
 
               {/* Notification Tooltip */}
-              <motion.div
-                initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                whileHover={{ opacity: 1, y: 0, scale: 1 }}
-                className="absolute -right-2 top-12 w-80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity"
-              >
+              <div className="absolute -right-2 top-12 w-80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity">
                 <div className="bg-popover border border-border rounded-lg shadow-lg p-4 space-y-3">
                   <div className="flex items-center gap-2 pb-2 border-b border-border">
                     <Bell className="w-4 h-4 text-primary" />
@@ -174,16 +150,14 @@ export default function Header({ user }: HeaderProps) {
                     </div>
                   ))}
                 </div>
-              </motion.div>
-            </motion.button>
+              </div>
+            </button>
 
             {/* User Profile Dropdown */}
             <div className="relative">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-2 px-2 md:px-3 py-2 rounded-lg hover:bg-muted transition-all group"
+                className="flex items-center gap-2 px-2 md:px-3 py-2 rounded-lg hover:bg-muted transition-all group hover:scale-[1.02] active:scale-[0.98]"
               >
                 {user.image ? (
                   <Image
@@ -208,114 +182,87 @@ export default function Header({ user }: HeaderProps) {
                   </p>
                 </div>
 
-                <motion.div
-                  animate={{ rotate: isDropdownOpen ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="hidden sm:block"
+                <div
+                  className={`hidden sm:block transition-transform duration-200 ${
+                    isDropdownOpen ? "rotate-180" : "rotate-0"
+                  }`}
                 >
                   <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                </motion.div>
-              </motion.button>
+                </div>
+              </button>
 
               {/* Dropdown Menu */}
-              <AnimatePresence>
-                {isDropdownOpen && (
-                  <>
-                    {/* Overlay to close dropdown */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setIsDropdownOpen(false)}
-                      className="fixed inset-0 z-40"
-                    />
+              {isDropdownOpen && (
+                <>
+                  {/* Overlay to close dropdown */}
+                  <div
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="fixed inset-0 z-40"
+                  />
 
-                    {/* Dropdown Content */}
-                    <motion.div
-                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                      transition={{
-                        type: "spring",
-                        damping: 20,
-                        stiffness: 300,
-                      }}
-                      className="absolute right-0 mt-2 w-56 bg-popover border border-border rounded-lg shadow-xl overflow-hidden z-50"
-                    >
-                      {/* User Info Section */}
-                      <div className="px-4 py-3 border-b border-border bg-muted/50">
-                        <p className="text-sm font-semibold text-foreground">
-                          {user.name}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {user.email}
-                        </p>
-                      </div>
+                  {/* Dropdown Content */}
+                  <div className="absolute right-0 mt-2 w-56 bg-popover border border-border rounded-lg shadow-xl overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-150">
+                    {/* User Info Section */}
+                    <div className="px-4 py-3 border-b border-border bg-muted/50">
+                      <p className="text-sm font-semibold text-foreground">
+                        {user.name}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {user.email}
+                      </p>
+                    </div>
 
-                      {/* Menu Items */}
-                      <div className="py-2">
-                        {dropdownItems.map((item, index) => {
-                          const Icon = item.icon;
-                          return (
-                            <motion.button
-                              key={index}
-                              whileHover={{ x: 4 }}
-                              onClick={() => {
-                                item.action();
-                                setIsDropdownOpen(false);
-                              }}
-                              className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors rounded-md ${
-                                item.isDanger
-                                  ? "text-danger hover:bg-red-300"
-                                  : "text-foreground hover:bg-muted"
-                              }`}
-                            >
-                              <Icon className="w-4 h-4" />
-                              {item.label}
-                            </motion.button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  </>
-                )}
-              </AnimatePresence>
+                    {/* Menu Items */}
+                    <div className="py-2">
+                      {dropdownItems.map((item, index) => {
+                        const Icon = item.icon;
+                        return (
+                          <button
+                            key={index}
+                            onClick={() => {
+                              item.action();
+                              setIsDropdownOpen(false);
+                            }}
+                            className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-all rounded-md hover:translate-x-1 ${
+                              item.isDanger
+                                ? "text-danger hover:bg-red-300"
+                                : "text-foreground hover:bg-muted"
+                            }`}
+                          >
+                            <Icon className="w-4 h-4" />
+                            {item.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
 
         {/* Mobile Menu - Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden mt-4 pt-4 border-t border-border space-y-2"
-            >
-              {menuItems.map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all ${
-                    pathname === item.href
-                      ? "bg-primary/10 text-primary font-semibold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  }`}
-                >
-                  <item.icon className="w-4 h-4" />
-                  {item.label}
-                </motion.a>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {isMenuOpen && (
+          <div className="lg:hidden mt-4 pt-4 border-t border-border space-y-2 animate-in fade-in duration-200">
+            {menuItems.map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all hover:translate-x-1 ${
+                  pathname === item.href
+                    ? "bg-primary/10 text-primary font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                <item.icon className="w-4 h-4" />
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
-    </motion.header>
+    </header>
   );
 }

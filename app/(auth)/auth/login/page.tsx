@@ -4,7 +4,6 @@ import { useReducer } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Logo from "@/app/components/Logo";
 import ErrorLogin from "./components/ErrorLogin";
@@ -145,19 +144,9 @@ export default function LoginPage() {
         show={state.error.show}
         onClose={() => dispatch({ type: "HIDE_ERROR" })}
       />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-md"
-      >
+      <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         {/* Logo */}
-        <motion.div
-          className="text-center mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
+        <div className="text-center mb-8 animate-in fade-in duration-500 delay-200">
           <div className="flex justify-center mb-6">
             <Logo className="gap-2!" />
           </div>
@@ -165,26 +154,16 @@ export default function LoginPage() {
           <p className="text-muted-foreground">
             Acesse sua conta para continuar planejando
           </p>
-        </motion.div>
+        </div>
 
         {/* Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.4 }}
-          className="bg-card border border-border rounded-2xl p-8 shadow-xl"
-        >
+        <div className="bg-card border border-border rounded-2xl p-8 shadow-xl animate-in fade-in zoom-in-95 duration-400 delay-300">
           {/* Google Login Button */}
-          <motion.button
+          <button
             type="button"
             onClick={handleGoogleLogin}
             disabled={state.isGoogleLoading}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="w-full py-3 rounded-lg border border-border bg-popover hover:bg-muted transition-all flex items-center justify-center gap-2 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 rounded-lg border border-border bg-popover hover:bg-muted transition-all flex items-center justify-center gap-2 font-semibold disabled:opacity-50 disabled:cursor-not-allowed animate-in fade-in slide-in-from-bottom-2 duration-400 delay-300 hover:scale-[1.02] active:scale-[0.98]"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -205,15 +184,10 @@ export default function LoginPage() {
               />
             </svg>
             {state.isGoogleLoading ? "Conectando..." : "Continuar com Gmail"}
-          </motion.button>
+          </button>
 
           {/* Divider */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="relative my-6"
-          >
+          <div className="relative my-6 animate-in fade-in duration-400 delay-400">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-border"></div>
             </div>
@@ -222,16 +196,12 @@ export default function LoginPage() {
                 Ou continue com email
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Email */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-            >
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-400 delay-500">
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email
               </label>
@@ -251,14 +221,10 @@ export default function LoginPage() {
                   {errors.email.message}
                 </p>
               )}
-            </motion.div>
+            </div>
 
             {/* Senha */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-400 delay-550">
               <div className="flex items-center justify-between mb-2">
                 <label htmlFor="password" className="block text-sm font-medium">
                   Senha
@@ -286,30 +252,23 @@ export default function LoginPage() {
                   {errors.password.message}
                 </p>
               )}
-            </motion.div>
+            </div>
             {/* Botão */}
-            <motion.button
+            <button
               type="submit"
               disabled={state.isSubmitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 rounded-lg text-primary-foreground font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+              className="w-full py-3 rounded-lg text-primary-foreground font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-6 hover:scale-[1.02] active:scale-[0.98]"
               style={{
                 background:
                   "linear-gradient(90deg,var(--primary),var(--secondary))",
               }}
             >
               {state.isSubmitting ? "Entrando..." : "Entrar"}
-            </motion.button>
+            </button>
           </form>
 
           {/* Link para Registro */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.55 }}
-            className="mt-6 text-center text-sm text-muted-foreground"
-          >
+          <div className="mt-6 text-center text-sm text-muted-foreground animate-in fade-in duration-400 delay-600">
             Não tem uma conta?{" "}
             <Link
               href="/auth/register"
@@ -317,16 +276,11 @@ export default function LoginPage() {
             >
               Registre-se
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Footer */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="text-center text-xs text-muted-foreground mt-8"
-        >
+        <p className="text-center text-xs text-muted-foreground mt-8 animate-in fade-in duration-500 delay-700">
           Ao fazer login, você concorda com nossos{" "}
           <Link href="/terms" className="hover:text-foreground transition">
             Termos de Serviço
@@ -335,8 +289,8 @@ export default function LoginPage() {
           <Link href="/privacy" className="hover:text-foreground transition">
             Política de Privacidade
           </Link>
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
     </div>
   );
 }

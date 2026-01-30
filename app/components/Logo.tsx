@@ -1,16 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export default function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-3 ${className}`} aria-hidden>
       {/* Icon - Creative Neural Flux Design */}
-      <motion.div
-        className="relative h-10 w-10 flex-none"
-        whileHover={{ scale: 1.05 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      >
+      <div className="relative h-10 w-10 flex-none transition-transform duration-200 hover:scale-[1.03]">
         <svg
           viewBox="0 0 48 48"
           fill="none"
@@ -46,34 +38,17 @@ export default function Logo({ className = "" }: { className?: string }) {
           />
 
           {/* Central animated nodes */}
-          <motion.circle
+          <circle
             cx="24"
             cy="24"
             r="4"
             fill="url(#flux-main)"
             filter="url(#glow)"
-            animate={{
-              r: [4, 5.5, 4],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            className="animate-rotinaai-flux-pulse"
           />
 
           {/* Orbital paths - Flux streams */}
-          <motion.g
-            animate={{
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{ transformOrigin: "24px 24px" }}
-          >
+          <g className="animate-rotinaai-flux-spin">
             {/* Top-right path */}
             <path
               d="M24 24 Q32 16 35 12"
@@ -121,20 +96,10 @@ export default function Logo({ className = "" }: { className?: string }) {
               fill="url(#flux-main)"
               filter="url(#glow)"
             />
-          </motion.g>
+          </g>
 
           {/* Counter-rotating accent paths */}
-          <motion.g
-            animate={{
-              rotate: [0, -360],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{ transformOrigin: "24px 24px" }}
-          >
+          <g className="animate-rotinaai-flux-spin-reverse">
             {/* Bottom-left path */}
             <path
               d="M24 24 Q16 32 13 36"
@@ -182,61 +147,36 @@ export default function Logo({ className = "" }: { className?: string }) {
               fill="var(--secondary)"
               opacity="0.5"
             />
-          </motion.g>
+          </g>
 
           {/* Pulse effect for the core */}
-          <motion.circle
+          <circle
             cx="24"
             cy="24"
             r="4"
             fill="none"
             stroke="url(#flux-main)"
             strokeWidth="2"
-            animate={{
-              r: [4, 10, 4],
-              opacity: [1, 0, 1],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            className="animate-rotinaai-flux-glow"
           />
         </svg>
 
         {/* Ambient glow */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-0 bg-linear-to-r from-primary via-secondary to-primary blur-md rounded-full"
+        <div
+          className="absolute inset-0 bg-linear-to-r from-primary via-secondary to-primary blur-md rounded-full animate-rotinaai-flux-glow"
           style={{ filter: "blur(8px)" }}
         />
-      </motion.div>
+      </div>
 
       {/* Text */}
       <div className="flex flex-col leading-tight">
         <span className="text-xl font-bold tracking-tight">
-          <motion.span
-            className="inline-block"
-            whileHover={{ scale: 1.08 }}
-            transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          >
+          <span className="inline-block transition-transform duration-200 hover:scale-[1.06]">
             Rotina
-          </motion.span>
-          <motion.span
-            className="bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary inline-block"
-            whileHover={{ scale: 1.08 }}
-            transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          >
+          </span>
+          <span className="bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary inline-block transition-transform duration-200 hover:scale-[1.06]">
             AI
-          </motion.span>
+          </span>
         </span>
         <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-muted-foreground/80">
           Produtividade inteligente

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Logo from "@/app/components/Logo";
 
@@ -22,12 +19,7 @@ export default function TermsPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8"
-        >
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div>
             <h1 className="text-4xl font-bold mb-2">Termos de Serviço</h1>
             <p className="text-muted-foreground">
@@ -35,11 +27,9 @@ export default function TermsPage() {
             </p>
           </div>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "80ms" }}
           >
             <h2 className="text-2xl font-bold">1. Aceitação dos Termos</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -47,13 +37,11 @@ export default function TermsPage() {
               estes Termos de Serviço. Se você não concorda com qualquer parte
               destes termos, você não pode usar nosso serviço.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.15 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "120ms" }}
           >
             <h2 className="text-2xl font-bold">2. Descrição do Serviço</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -62,13 +50,11 @@ export default function TermsPage() {
               produtividade. O serviço inclui processamento de linguagem
               natural, agendamento automático e análise de tarefas.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "160ms" }}
           >
             <h2 className="text-2xl font-bold">3. Contas de Usuário</h2>
             <div className="space-y-3 text-foreground/80">
@@ -83,13 +69,11 @@ export default function TermsPage() {
                 informações atualizadas.
               </p>
             </div>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.25 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "200ms" }}
           >
             <h2 className="text-2xl font-bold">
               4. Direitos de Propriedade Intelectual
@@ -100,13 +84,11 @@ export default function TermsPage() {
               licença limitada e não transferível para usar nosso serviço apenas
               para fins pessoais ou comerciais legítimos.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "240ms" }}
           >
             <h2 className="text-2xl font-bold">5. Uso Aceitável</h2>
             <p className="text-foreground/80 leading-relaxed mb-3">
@@ -122,13 +104,11 @@ export default function TermsPage() {
               <li>Distribuir malware ou código prejudicial</li>
               <li>Coletar dados através de web scraping não autorizado</li>
             </ul>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.35 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "280ms" }}
           >
             <h2 className="text-2xl font-bold">
               6. Limitação de Responsabilidade
@@ -139,13 +119,11 @@ export default function TermsPage() {
               consequentes, mesmo que tenha sido avisado da possibilidade de
               tais danos.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "320ms" }}
           >
             <h2 className="text-2xl font-bold">7. Rescisão</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -153,13 +131,11 @@ export default function TermsPage() {
               sem aviso prévio ou responsabilidade, por qualquer motivo,
               incluindo se você violar estes Termos de Serviço.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "360ms" }}
           >
             <h2 className="text-2xl font-bold">8. Alterações aos Termos</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -168,13 +144,11 @@ export default function TermsPage() {
               email. Seu uso contínuo do serviço após mudanças constitui
               aceitação dos novos termos.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="bg-card border border-border rounded-xl p-6 space-y-4"
+          <section
+            className="bg-card border border-border rounded-xl p-6 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "400ms" }}
           >
             <h2 className="text-2xl font-bold">Entre em Contato</h2>
             <p className="text-foreground/80">
@@ -182,8 +156,8 @@ export default function TermsPage() {
               conosco em:
             </p>
             <p className="font-semibold">support@rotinaai.com</p>
-          </motion.section>
-        </motion.div>
+          </section>
+        </div>
       </div>
     </div>
   );

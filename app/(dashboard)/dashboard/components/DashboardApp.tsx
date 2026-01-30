@@ -14,7 +14,6 @@ interface DashboardAppProps {
 export default function DashboardApp({ user, children }: DashboardAppProps) {
   function DashboardShell() {
     const { isCollapsed } = useSidebar();
-    const sidebarWidth = isCollapsed ? 80 : 260;
     const desktopOffsetClass = isCollapsed ? "lg:ml-[80px]" : "lg:ml-[260px]";
 
     return (

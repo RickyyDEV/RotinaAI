@@ -1,74 +1,65 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import Logo from "./Logo";
+import ThemeToggleIcon from "./ThemeToggleIcon";
+
+const navLinks = [
+  { name: "Features", href: "#features" },
+  { name: "Como ajuda", href: "#how" },
+  { name: "Benefícios", href: "#benefits" },
+  { name: "Para quem", href: "#who" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const navLinks = [
-    { name: "Features", href: "#features" },
-    { name: "Como ajuda", href: "#how" },
-    { name: "Benefícios", href: "#benefits" },
-    { name: "Para quem", href: "#who" },
-  ];
-
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 max-w-full">
-      <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 120, damping: 25 }}
-        className="max-w-7xl mx-auto px-6 py-3 bg-card/60 backdrop-blur-md border border-border rounded-full flex items-center justify-between shadow-lg"
-      >
-        <motion.a href="#" whileTap={{ scale: 0.98 }}>
+      <div className="max-w-7xl mx-auto px-6 py-3 bg-card/60 backdrop-blur-md border border-border rounded-full flex items-center justify-between shadow-lg animate-in fade-in slide-in-from-top-3 duration-500">
+        <Link href="/" className="active:scale-[0.98] transition-transform">
           <Logo className="flex items-center gap-4" />
-        </motion.a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-2 text-sm">
           {navLinks.map((link) => (
-            <motion.a
+            <a
               key={link.name}
               href={link.href}
-              className="px-4 py-2 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-colors duration-200"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="px-4 py-2 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               {link.name}
-            </motion.a>
+            </a>
           ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <motion.a
+          <ThemeToggleIcon />
+          <Link
             href="/auth/login"
             className="text-sm px-5 py-2.5 border border-border rounded-full text-foreground hover:bg-muted transition-colors duration-200"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            prefetch
           >
             Login
-          </motion.a>
-          <motion.a
+          </Link>
+          <Link
             href="/auth/register"
-            className="inline-flex items-center px-6 py-2.5 rounded-full text-primary-foreground font-medium transition-all duration-200"
+            className="inline-flex items-center px-6 py-2.5 rounded-full text-primary-foreground font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             style={{
               background:
                 "linear-gradient(90deg,var(--primary),var(--secondary))",
+              boxShadow: "0 8px 16px rgba(37, 99, 235, 0.12)",
             }}
-            whileHover={{
-              scale: 1.02,
-              boxShadow: "0 8px 16px rgba(37, 99, 235, 0.25)",
-            }}
-            whileTap={{ scale: 0.98 }}
+            prefetch
           >
             Começar grátis
-          </motion.a>
+          </Link>
         </div>
 
         <button
           className="md:hidden px-3 py-2 rounded-md bg-card border border-border text-foreground"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
           {open ? (
@@ -103,51 +94,46 @@ export default function Navbar() {
             </svg>
           )}
         </button>
-      </motion.div>
+      </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden"
-          >
-            <div className="max-w-7xl mx-auto px-6 py-3">
-              <div className="bg-card border border-border rounded-lg p-4 space-y-2 shadow-md">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="block py-2 text-sm text-foreground hover:bg-muted rounded-md px-3"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-                <div className="pt-2 border-t border-border mt-2">
-                  <a
-                    href="/auth/login"
-                    className="block py-2 text-sm text-foreground hover:bg-muted rounded-md px-3"
-                  >
-                    Login
-                  </a>
-                  <a
-                    href="/auth/register"
-                    className="block py-2 text-sm text-primary-foreground rounded-md px-3 mt-2"
-                    style={{
-                      background:
-                        "linear-gradient(90deg,var(--primary),var(--secondary))",
-                    }}
-                  >
-                    Começar grátis
-                  </a>
+      {open ? (
+        <div className="md:hidden overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="max-w-7xl mx-auto px-6 py-3">
+            <div className="bg-card border border-border rounded-lg p-4 space-y-2 shadow-md">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="block py-2 text-sm text-foreground hover:bg-muted rounded-md px-3"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="pt-2 border-t border-border mt-2">
+                <div className="px-3 pb-2">
+                  <ThemeToggleIcon className="h-10 w-10" />
                 </div>
+                <Link
+                  href="/auth/login"
+                  className="block py-2 text-sm text-foreground hover:bg-muted rounded-md px-3"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/auth/register"
+                  className="block py-2 text-sm text-primary-foreground rounded-md px-3 mt-2"
+                  style={{
+                    background:
+                      "linear-gradient(90deg,var(--primary),var(--secondary))",
+                  }}
+                >
+                  Começar grátis
+                </Link>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }

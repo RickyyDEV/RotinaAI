@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Logo from "@/app/components/Logo";
 
@@ -23,12 +20,7 @@ export default function PrivacyPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8"
-        >
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div>
             <h1 className="text-4xl font-bold mb-2">Política de Privacidade</h1>
             <p className="text-muted-foreground">
@@ -36,11 +28,9 @@ export default function PrivacyPage() {
             </p>
           </div>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "80ms" }}
           >
             <h2 className="text-2xl font-bold">1. Introdução</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -48,13 +38,11 @@ export default function PrivacyPage() {
               de Privacidade explica como coletamos, usamos, divulgamos e
               protegemos suas informações quando você usa nosso serviço.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.15 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "120ms" }}
           >
             <h2 className="text-2xl font-bold">2. Informações que Coletamos</h2>
             <p className="text-foreground/80 leading-relaxed mb-3">
@@ -78,13 +66,11 @@ export default function PrivacyPage() {
                 suporte e feedback
               </li>
             </ul>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "160ms" }}
           >
             <h2 className="text-2xl font-bold">
               3. Como Usamos Suas Informações
@@ -100,13 +86,11 @@ export default function PrivacyPage() {
               <li>Analisar tendências de uso e melhorar funcionalidades</li>
               <li>Cumprir obrigações legais e regulatórias</li>
             </ul>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.25 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "200ms" }}
           >
             <h2 className="text-2xl font-bold">4. Compartilhamento de Dados</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -121,13 +105,11 @@ export default function PrivacyPage() {
                 publicamente
               </li>
             </ul>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "240ms" }}
           >
             <h2 className="text-2xl font-bold">5. Segurança de Dados</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -136,13 +118,11 @@ export default function PrivacyPage() {
               autorizado, alteração, divulgação ou destruição. Usamos
               criptografia SSL/TLS para proteger dados em trânsito.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.35 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "280ms" }}
           >
             <h2 className="text-2xl font-bold">6. Retenção de Dados</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -150,13 +130,11 @@ export default function PrivacyPage() {
               ou conforme necessário para fornecer nossos serviços. Você pode
               solicitar a exclusão de seus dados a qualquer momento.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "320ms" }}
           >
             <h2 className="text-2xl font-bold">7. Seus Direitos</h2>
             <p className="text-foreground/80 leading-relaxed mb-3">
@@ -169,13 +147,11 @@ export default function PrivacyPage() {
               <li>Optar por não receber comunicações de marketing</li>
               <li>Portabilidade de dados</li>
             </ul>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "360ms" }}
           >
             <h2 className="text-2xl font-bold">8. Cookies e Rastreamento</h2>
             <p className="text-foreground/80 leading-relaxed">
@@ -183,13 +159,11 @@ export default function PrivacyPage() {
               o uso de cookies através das configurações do seu navegador.
               Alguns cookies são essenciais para o funcionamento do serviço.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="space-y-4"
+          <section
+            className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "400ms" }}
           >
             <h2 className="text-2xl font-bold">
               9. Alterações a Esta Política
@@ -199,13 +173,11 @@ export default function PrivacyPage() {
               Notificaremos você sobre mudanças significativas por email ou
               através de um aviso em nosso serviço.
             </p>
-          </motion.section>
+          </section>
 
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.55 }}
-            className="bg-card border border-border rounded-xl p-6 space-y-4"
+          <section
+            className="bg-card border border-border rounded-xl p-6 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ animationDelay: "440ms" }}
           >
             <h2 className="text-2xl font-bold">Entre em Contato</h2>
             <p className="text-foreground/80">
@@ -213,8 +185,8 @@ export default function PrivacyPage() {
               Privacidade, entre em contato conosco em:
             </p>
             <p className="font-semibold">privacy@rotinaai.com</p>
-          </motion.section>
-        </motion.div>
+          </section>
+        </div>
       </div>
     </div>
   );

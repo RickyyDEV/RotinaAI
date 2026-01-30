@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   Sparkles,
   Calendar,
@@ -44,74 +43,45 @@ export default function DashboardWelcome({ userName }: DashboardWelcomeProps) {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary/10 via-secondary/5 to-accent/10 border border-primary/20 p-8 md:p-12"
-      >
+      <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary/10 via-secondary/5 to-accent/10 border border-primary/20 p-8 md:p-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -mr-36 -mt-36" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl -ml-36 -mb-36" />
 
         <div className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block mb-4 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20"
-          >
+          <div className="inline-block mb-4 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 animate-in fade-in zoom-in-95 duration-300 delay-200">
             <span className="text-sm font-semibold text-primary flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
               Bem-vindo de volta!
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-3xl md:text-4xl font-bold text-foreground mb-4"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 animate-in fade-in slide-in-from-bottom-2 duration-300 delay-300">
             Vamos organizar seu dia, {userName.split(" ")[0]}? 🚀
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg text-muted-foreground mb-6 max-w-2xl"
-          >
+          <p className="text-lg text-muted-foreground mb-6 max-w-2xl animate-in fade-in slide-in-from-bottom-2 duration-300 delay-400">
             Com RotinaAI, você transforma suas ideias em um plano diário
             estruturado e alcançável. Comece digitando tudo o que precisa fazer
             hoje.
-          </motion.p>
+          </p>
 
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 rounded-lg bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-xl transition-shadow flex items-center gap-2 w-fit"
-          >
+          <button className="px-6 py-3 rounded-lg bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2 w-fit animate-in fade-in zoom-in-95 duration-300 delay-500 hover:scale-105 active:scale-95">
             ✨ Planejar Meu Dia com IA
             <ArrowRight className="w-4 h-4" />
-          </motion.button>
+          </button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * (index + 1) }}
-              whileHover={{ y: -5 }}
-              className="group p-6 rounded-xl bg-card border border-border hover:border-primary/30 transition-all"
+              className="group p-6 rounded-xl bg-card border border-border hover:border-primary/30 transition-all animate-in fade-in slide-in-from-bottom-4 duration-500"
+              style={{ animationDelay: `${(index + 1) * 100}ms` }}
             >
               <div className="flex items-start justify-between mb-4">
                 <div
@@ -122,24 +92,14 @@ export default function DashboardWelcome({ userName }: DashboardWelcomeProps) {
               </div>
               <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
               <p className="text-3xl font-bold text-foreground">{stat.value}</p>
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3 }}
-                className="h-1 bg-linear-to-r from-primary to-secondary rounded-full mt-4 origin-left"
-              />
-            </motion.div>
+              <div className="h-1 bg-linear-to-r from-primary to-secondary rounded-full mt-4 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+            </div>
           );
         })}
       </div>
 
       {/* Quick Access */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
-      >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-in fade-in duration-500 delay-600">
         {/* Recent Tarefas */}
         <div className="p-6 rounded-xl bg-card border border-border">
           <h3 className="text-lg font-semibold text-foreground mb-4">
@@ -147,10 +107,9 @@ export default function DashboardWelcome({ userName }: DashboardWelcomeProps) {
           </h3>
           <div className="space-y-3">
             {[1, 2, 3].map((i) => (
-              <motion.div
+              <div
                 key={i}
-                whileHover={{ x: 4 }}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors cursor-pointer group"
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-all cursor-pointer group hover:translate-x-1"
               >
                 <div className="w-5 h-5 rounded border border-border group-hover:bg-primary group-hover:border-primary transition-all" />
                 <div className="flex-1">
@@ -159,7 +118,7 @@ export default function DashboardWelcome({ userName }: DashboardWelcomeProps) {
                   </p>
                   <p className="text-xs text-muted-foreground">Hoje às 14:30</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -176,11 +135,9 @@ export default function DashboardWelcome({ userName }: DashboardWelcomeProps) {
                   {day}
                 </span>
                 <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(i * 19 + 42) % 100}%` }}
-                    transition={{ delay: i * 0.1, duration: 0.8 }}
+                  <div
                     className="h-full bg-linear-to-r from-primary to-secondary rounded-full"
+                    style={{ width: `${(i * 19 + 42) % 100}%` }}
                   />
                 </div>
                 {/* <span className="text-xs text-muted-foreground w-8 text-right">
@@ -190,7 +147,7 @@ export default function DashboardWelcome({ userName }: DashboardWelcomeProps) {
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

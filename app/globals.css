@@ -123,3 +123,143 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  @keyframes rotinaai-flux-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotinaai-flux-spin-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes rotinaai-flux-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.35);
+      opacity: 0.15;
+    }
+  }
+
+  @keyframes rotinaai-flux-glow {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 0.4;
+    }
+  }
+
+  .animate-rotinaai-flux-spin {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: rotinaai-flux-spin 8s linear infinite;
+  }
+
+  .animate-rotinaai-flux-spin-reverse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: rotinaai-flux-spin-reverse 12s linear infinite;
+  }
+
+  .animate-rotinaai-flux-pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: rotinaai-flux-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-rotinaai-flux-glow {
+    animation: rotinaai-flux-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes rotinaai-theme-ripple {
+    0% {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    35% {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.02);
+    }
+  }
+
+  .animate-rotinaai-theme-ripple {
+    animation: rotinaai-theme-ripple 700ms ease-in-out both;
+  }
+
+  @keyframes rotinaai-toast-wiggle {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(10deg);
+    }
+    75% {
+      transform: rotate(-10deg);
+    }
+  }
+
+  @keyframes rotinaai-toast-progress {
+    from {
+      transform: scaleX(1);
+    }
+    to {
+      transform: scaleX(0);
+    }
+  }
+
+  @keyframes rotinaai-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes rotinaai-soft-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 0.9;
+    }
+  }
+
+  .animate-rotinaai-toast-wiggle {
+    animation: rotinaai-toast-wiggle 2s ease-in-out infinite;
+  }
+
+  .animate-rotinaai-toast-progress {
+    transform-origin: left;
+    animation: rotinaai-toast-progress 6s linear both;
+  }
+
+  .animate-rotinaai-float {
+    animation: rotinaai-float 2s ease-in-out infinite;
+  }
+
+  .animate-rotinaai-soft-pulse {
+    animation: rotinaai-soft-pulse 4s ease-in-out infinite;
+  }
+}

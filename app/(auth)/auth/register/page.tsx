@@ -4,7 +4,6 @@ import { useReducer } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Logo from "@/app/components/Logo";
 import { SignUp } from "./action";
@@ -120,31 +119,17 @@ export default function RegisterPage() {
         onClose={() => dispatch({ type: "HIDE_ERROR" })}
       />
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-md"
-      >
+      <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <SuccessSignUp
           email={state.success.email}
           open={state.success.show}
           onOpenChange={(open) => {
             if (!open) dispatch({ type: "HIDE_SUCCESS" });
           }}
-          onRetry={() => {
-            dispatch({ type: "HIDE_SUCCESS" });
-            reset();
-          }}
         />
 
         {/* Logo */}
-        <motion.div
-          className="text-center mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
+        <div className="text-center mb-8 animate-in fade-in duration-500 delay-200">
           <div className="flex justify-center mb-6">
             <Logo className="gap-2!" />
           </div>
@@ -152,20 +137,11 @@ export default function RegisterPage() {
           <p className="text-muted-foreground">
             Organize sua rotina com IA inteligente
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.4 }}
-          className="bg-card border border-border rounded-2xl p-8 shadow-xl"
-        >
+        <div className="bg-card border border-border rounded-2xl p-8 shadow-xl animate-in fade-in zoom-in-95 duration-400 delay-300">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-            >
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-400 delay-400">
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Nome completo
               </label>
@@ -185,13 +161,9 @@ export default function RegisterPage() {
                   {errors.name.message}
                 </p>
               )}
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-400 delay-450">
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email
               </label>
@@ -211,14 +183,10 @@ export default function RegisterPage() {
                   {errors.email.message}
                 </p>
               )}
-            </motion.div>
+            </div>
 
             {/* Senha */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-            >
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-400 delay-500">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium mb-2"
@@ -241,13 +209,9 @@ export default function RegisterPage() {
                   {errors.password.message}
                 </p>
               )}
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-400 delay-550">
               <label
                 htmlFor="confirmPassword"
                 className="block text-sm font-medium mb-2"
@@ -270,29 +234,22 @@ export default function RegisterPage() {
                   {errors.confirmPassword.message}
                 </p>
               )}
-            </motion.div>
+            </div>
 
-            <motion.button
+            <button
               type="submit"
               disabled={state.isSubmitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 rounded-lg text-primary-foreground font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+              className="w-full py-3 rounded-lg text-primary-foreground font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-6 hover:scale-[1.02] active:scale-[0.98]"
               style={{
                 background:
                   "linear-gradient(90deg,var(--primary),var(--secondary))",
               }}
             >
               {state.isSubmitting ? "Criando conta..." : "Criar conta"}
-            </motion.button>
+            </button>
           </form>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.55 }}
-            className="mt-6 text-center text-sm text-muted-foreground"
-          >
+          <div className="mt-6 text-center text-sm text-muted-foreground animate-in fade-in duration-400 delay-600">
             Já tem uma conta?{" "}
             <Link
               href="/auth/login"
@@ -300,16 +257,11 @@ export default function RegisterPage() {
             >
               Faça login
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Footer */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="text-center text-xs text-muted-foreground mt-8"
-        >
+        <p className="text-center text-xs text-muted-foreground mt-8 animate-in fade-in duration-500 delay-700">
           Ao se registrar, você concorda com nossos{" "}
           <Link href="/terms" className="hover:text-foreground transition">
             Termos de Serviço
@@ -318,8 +270,8 @@ export default function RegisterPage() {
           <Link href="/privacy" className="hover:text-foreground transition">
             Política de Privacidade
           </Link>
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
     </div>
   );
 }

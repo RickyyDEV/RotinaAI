@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 import "./env";
 const nextConfig: NextConfig = {
   /* config options here */
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   images: {
     remotePatterns: [
       {
